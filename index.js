@@ -12,6 +12,7 @@ const SignaturePad = (props, ref) => {
   const {
     onError = noopFunction,
     style = {},
+    line = true,
     subtitle = '&nbsp;',
     loader = noopFunction,
     off = false,
@@ -79,11 +80,12 @@ const SignaturePad = (props, ref) => {
       html: htmlContent({
         script,
         backgroundColor,
+        line,
         ratio,
         subtitle,
       }),
     };
-  }, [props, backgroundColor, subtitle]);
+  }, [props, backgroundColor, line, subtitle]);
 
   const [webViewInstance, setWebView] = useState();
 

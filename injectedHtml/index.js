@@ -1,6 +1,7 @@
 export default ({
   script,
   backgroundColor = '#ffffff',
+  line = true,
   ratio = 1,
   subtitle = '&nbsp;',
 }) => `<html>
@@ -35,9 +36,7 @@ export default ({
 
   </style>
   <body>
-    <div id="line">
-      ${subtitle}
-    </div>
+    ${line ? `<div id="line">${subtitle}</div>` : ''}
     <canvas></canvas>
     <script>${script}</script>
   </body>
