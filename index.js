@@ -99,6 +99,7 @@ const SignaturePad = (props, ref) => {
         ref.current = {
           webView,
           clear: getExecuteFunction('signaturePad.clear'),
+          undo: getExecuteFunction('undo'),
           cropData: getExecuteFunction('cropData'),
         };
       }

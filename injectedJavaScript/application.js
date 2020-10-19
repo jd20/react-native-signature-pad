@@ -50,6 +50,14 @@ export default ({
     }
   });
   ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 });` : ''}
+
+  var undo = function() {
+    var data = window.signaturePad.toData();
+    if (data) {
+      data.pop(); // remove the last dot or line
+      window.signaturePad.fromData(data);
+    }
+  }
   
   var cropData = function() {
     var imgWidth = signaturePadCanvas.width;
