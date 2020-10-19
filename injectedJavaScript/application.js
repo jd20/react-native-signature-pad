@@ -49,7 +49,7 @@ export default ({
       });
     }
   });
-  ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}');` : ''}
+  ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 });` : ''}
   
   var cropData = function() {
     var imgWidth = signaturePadCanvas.width;
