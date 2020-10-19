@@ -23,8 +23,8 @@ export default ({
     });
   };
   
-  var bodyWidth = document.body.clientWidth || window.innerWidth;
-  var bodyHeight = document.body.clientHeight || window.innerHeight;
+  var bodyWidth = document.body.clientWidth || window.innerWidth;
+  var bodyHeight = document.body.clientHeight || window.innerHeight;
   var signaturePadCanvas = document.querySelector('canvas');
   
   signaturePadCanvas.width = bodyWidth;
