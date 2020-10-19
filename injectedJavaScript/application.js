@@ -1,5 +1,6 @@
 export default ({
   penColor = '#000000',
+  data = null,
   dataURL = null,
   minWidth = 1,
   maxWidth = 2,
@@ -45,11 +46,28 @@ export default ({
     onEnd: function() {
       send({
         func: 'onChange',
-        args: [window.signaturePad.toDataURL()],
+        args: [],
       });
     }
   });
+  ${Array.isArray(data) ? `window.signaturePad.fromData(${JSON.stringify(data)});` : ''}
   ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 });` : ''}
+
+  var toData = function() {
+    var data = window.signaturePad.toData();
+    send({
+      func: 'onData',
+      args: [JSON.stringify(data)],
+    });
+  }
+
+  var toDataURL = function(type = 'image/png') {
+    var dataURL = window.signaturePad.toDataURL(type);
+    send({
+      func: 'onDataURL',
+      args: [dataURL],
+    });
+  }
 
   var undo = function() {
     var data = window.signaturePad.toData();

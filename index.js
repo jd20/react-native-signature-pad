@@ -90,15 +90,18 @@ const SignaturePad = (props, ref) => {
   const [webViewInstance, setWebView] = useState();
 
   const setRef = useCallback(
-    webView => {
+    (webView) => {
       setWebView(webView);
-      const getExecuteFunction = (func, args = []) => {
-        return () => webView.injectJavaScript(`window.${func}();true;`);
+      const getExecuteFunction = func => (...args) => {
+        const strArgs = args.map(x => JSON.stringify(x)).join(',');
+        webView.injectJavaScript(`window.${func}(${strArgs});true;`);
       };
       if (ref) {
         ref.current = {
           webView,
           clear: getExecuteFunction('signaturePad.clear'),
+          toData: getExecuteFunction('toData'),
+          toDataURL: getExecuteFunction('toDataURL'),
           undo: getExecuteFunction('undo'),
           cropData: getExecuteFunction('cropData'),
         };
