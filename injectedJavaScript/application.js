@@ -50,8 +50,8 @@ export default ({
       });
     }
   });
-  ${Array.isArray(data) ? `window.signaturePad.fromData(${JSON.stringify(data)});` : ''}
   ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 });` : ''}
+  ${Array.isArray(data) ? `window.signaturePad.fromData(${JSON.stringify(data)});` : ''}
 
   var toData = function() {
     var data = window.signaturePad.toData();
