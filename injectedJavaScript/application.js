@@ -50,7 +50,15 @@ export default ({
       });
     }
   });
-  ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 });` : ''}
+
+  var onLoaded = function(error) {
+    send({
+      func: 'onLoaded',
+      args: [error],
+    })
+  }
+
+  ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 }, onLoaded);` : ''}
   ${Array.isArray(data) ? `window.signaturePad.fromData(${JSON.stringify(data)});` : ''}
 
   var toData = function() {
