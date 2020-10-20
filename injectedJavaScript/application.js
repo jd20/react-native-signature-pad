@@ -57,7 +57,7 @@ export default ({
     var data = window.signaturePad.toData();
     send({
       func: 'onData',
-      args: [JSON.stringify(data)],
+      args: [data],
     });
   }
 
