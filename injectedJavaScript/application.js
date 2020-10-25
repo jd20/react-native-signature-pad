@@ -51,14 +51,14 @@ export default ({
     }
   });
 
-  var onLoaded = function(error) {
+  var onDataLoaded = function(error) {
     send({
-      func: 'onLoaded',
+      func: 'onDataLoaded',
       args: [error],
     })
   }
 
-  ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 }, onLoaded);` : ''}
+  ${dataURL ? `window.signaturePad.fromDataURL('${dataURL}', { ratio: 1 }, onDataLoaded);` : ''}
   ${Array.isArray(data) ? `window.signaturePad.fromData(${JSON.stringify(data)});` : ''}
 
   var toData = function() {

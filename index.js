@@ -11,6 +11,7 @@ const noopFunction = () => {};
 const SignaturePad = (props, ref) => {
   const {
     onError = noopFunction,
+    onLoadEnd = noopFunction,
     style = {},
     line = true,
     subtitle = '&nbsp;',
@@ -43,7 +44,12 @@ const SignaturePad = (props, ref) => {
   }, []);
 
   const [started, setStarted] = useState(false);
-  const start = useCallback(() => setTimeout(() => setStarted(true), 100), []);
+  const start = useCallback(() => {
+    setTimeout(() => {
+      setStarted(true);
+      onLoadEnd();
+    }, 100);
+  }, []);
 
   const backgroundColor = useMemo(
     () => StyleSheet.flatten(style).backgroundColor || '#ffffff',
